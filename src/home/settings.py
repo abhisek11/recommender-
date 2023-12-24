@@ -37,8 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'profiles',
+
 ]
+
+# try:
+#     import jupyterlab
+#     NOTEBOOK_DEFAULT_URL = '/lab'  # Using JupyterLab
+# except ImportError:
+#     NOTEBOOK_DEFAULT_URL = '/tree'  # Using Jupyter
+
+# NOTEBOOK_DIR = BASE_DIR / "notebooks"
+
+# NOTEBOOK_ARGUMENTS = [
+#     '--ip', '0.0.0.0',
+#     '--port', '8888',
+#     '--notebook-dir', NOTEBOOK_DIR,
+#     '--NotebookApp.default_url', NOTEBOOK_DEFAULT_URL,
+# ]
+# IPYTHON_KERNEL_DISPLAY_NAME = 'Django Kernel'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
