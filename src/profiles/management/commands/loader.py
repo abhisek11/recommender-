@@ -6,4 +6,5 @@ user = get_user_model()
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        print(options)
+        print(f"there are {user.objects.count()} users")
+
