@@ -4,6 +4,28 @@ from home.utils import get_fake_profiles
 
 user = get_user_model()
 
+from functools import wraps
+import time
+
+def timer(func):
+    """helper function to estimate view execution time"""
+
+    @wraps(func)  # used for copying func metadata
+    def wrapper(*args, **kwargs):
+        # record start time
+        start = time.time()
+
+        # func execution
+        result = func(*args, **kwargs)
+        
+        duration = (time.time() - start) * 1000
+        # output execution time to console
+        print('view {} takes {:.2f} ms'.format(
+            func.__name__, 
+            duration
+            ))
+        return result
+    return wrapper
 
 class Command(BaseCommand):
 
@@ -19,7 +41,7 @@ class Command(BaseCommand):
             action='store_true',
             default=False,
         )
-
+    @timer
     def handle(self, *args, **options):
         count = options.get('count')
         show_total = options.get('show_total')
