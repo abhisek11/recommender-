@@ -41,3 +41,14 @@ code .
 - [Install Redis on Windows](https://www.codingforentrepreneurs.com/blog/redis-on-windows/)
 - [Install Redis on macOS](https://www.codingforentrepreneurs.com/blog/install-redis-mac-and-linux)
 - [Celery + Redis + Django Setup Guide](https://www.codingforentrepreneurs.com/blog/celery-redis-django/)
+
+
+## run shell_plus in notebook 
+import os, sys
+import django
+PROJECTPATH = '/Users/abhiseksingh/Desktop/fxai_projects/recommender/src'
+sys.path.insert(0, PROJECTPATH)
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my.django.settings.module")
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"  # https://docs.djangoproject.com/en/4.1/topics/async/#async-safety
+os.chdir(PROJECTPATH)
+django.setup()
